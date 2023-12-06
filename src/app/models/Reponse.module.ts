@@ -1,6 +1,6 @@
-import { TypeQuestion } from "./Enums.model";
-import { Question } from "./question.model";
-import { Vote } from "./vote.module";
+import { TypeQuestion } from "./Enums.module";
+import { Question } from "./Question.module";
+import { Vote } from "./Vote.module";
 
 // reponse.model.ts
 export interface Reponse {

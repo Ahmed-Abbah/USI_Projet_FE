@@ -1,9 +1,9 @@
 // question.model.ts
 
 import { Metier } from "./Metier.module";
-import { Reponse } from "./reponse.module";
-import { User } from "./user.module";
-import { Vote } from "./vote.module";
+import { Reponse } from "./Reponse.module";
+import { User } from "./User.module";
+import { Vote } from "./Vote.module";
 
 export interface Question {
     id: number;

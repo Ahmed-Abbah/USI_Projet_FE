@@ -1,8 +1,8 @@
 // vote.model.ts
 
-import { Question } from "./question.model";
-import { Reponse } from "./reponse.module";
-import { User } from "./user.module";
+import { Question } from "./Question.module";
+import { Reponse } from "./Reponse.module";
+import { User } from "./User.module";
 
 export interface Vote {
     id: number;

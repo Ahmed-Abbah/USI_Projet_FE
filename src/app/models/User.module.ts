@@ -1,5 +1,5 @@
-import { Fonction, Role } from "./Enums.model";
-import { Vote } from "./vote.module";
+import { Fonction, Role } from "./Enums.module";
+import { Vote } from "./Vote.module";
 
 // user.model.ts
 export interface User {
