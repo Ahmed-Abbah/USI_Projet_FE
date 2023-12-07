@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Question } from '../models/Question.module';
-import { QuestionService } from '../question.service';
+
+import { QuestionService } from '../../_services/question.service';
+import {QuestionResponse} from "../../_models/QuestionResponse.module";
 
 @Component({
   selector: 'app-question-card',
@@ -9,19 +10,19 @@ import { QuestionService } from '../question.service';
 })
 export class QuestionCardComponent {
   title = 'Q&A App';
-  public questions: Question[] | undefined;
+  public questionResponses: QuestionResponse[] | undefined;
 
   constructor(private questionService: QuestionService) {}
 
   ngOnInit() {
     this.getQuestions();
-    console.log(this.questions);
+    console.log(this.questionResponses);
   }
 
   public getQuestions(): void {
     this.questionService.getQuestions().subscribe({
       next: (response) => {
-        this.questions = response;
+        this.questionResponses = response;
       },
       error: (error) => {
         alert(error.message);
@@ -45,5 +46,7 @@ export class QuestionCardComponent {
       }
     });
   }
+
+
 
 }

@@ -1,0 +1,11 @@
+.logo-img {
+  display: none !important;
+  cursor: pointer;
+}
+
+/* for medium screens */
+@media (min-width: 768px) {
+  .logo-img {
+    display: block !important;
+  }
+}

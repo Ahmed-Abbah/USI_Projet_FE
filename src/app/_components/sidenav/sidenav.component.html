@@ -1,0 +1,26 @@
+
+<div class="sidenav">
+
+  <div class="top justify-content-center align-content-center mt-2">
+    <!--    <a routerLink="/" (click)="switchToClientMode()" style="text-decoration: none;">-->
+    <a style="text-decoration: none;">
+      <span class="logo">
+        <app-logo></app-logo>
+      </span>
+    </a>
+  </div>
+  <hr/>
+
+
+  <div class="center">
+    <ul>
+      <li *ngFor="let data of sideNavData" >
+        <a style="text-decoration: none;" routerLink="{{data.route}}">
+          <mat-icon class="icon" >{{data.icon}}</mat-icon>
+          <span>{{data.title}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</div>
