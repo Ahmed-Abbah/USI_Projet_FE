@@ -1,0 +1,15 @@
+/* Add this CSS to your styles.scss or styles.css file */
+
+.media-main {
+    display: flex;
+    align-items: center;
+  }
+  
+  .media-main .pull-left {
+    margin-right: 15px; /* Adjust the margin as needed */
+  }
+  
+  .media-main .info {
+    flex-grow: 1;
+  }
+  

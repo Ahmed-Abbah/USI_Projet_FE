@@ -7,6 +7,7 @@ import {DashboardComponent} from "./_components/dashboard/dashboard.component";
 import {QuestionsComponent} from "./_components/questions/questions.component";
 import {MetiersComponent} from "./_components/metiers/metiers.component";
 import {ExpertsComponent} from "./_components/experts/experts.component";
+import { QuestionDetailsComponent } from './_components/question-details/question-details.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,7 @@ const routes: Routes = [
 
       {path: '', component : DashboardComponent},
       {path: 'questions', component : QuestionsComponent},
+      {path: 'question/:questionId', component : QuestionDetailsComponent},
       {path: 'metiers', component : MetiersComponent},
       {path : 'experts', component : ExpertsComponent },
     ]

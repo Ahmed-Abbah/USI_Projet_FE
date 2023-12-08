@@ -13,6 +13,10 @@ export class QuestionService {
 
   constructor(private http : HttpClient) {}
 
+  public getQuestion(questionId:number):Observable<QuestionResponse>{
+    return this.http.get<QuestionResponse>(`${this.apiServiceUrl}/question/${questionId}`) ;
+  }
+
   public getQuestions():Observable<QuestionResponse[]>{
     return this.http.get<QuestionResponse[]>(`${this.apiServiceUrl}/question`) ;
   }
@@ -29,4 +33,6 @@ export class QuestionService {
   public deleteQuestion(questionId : number):Observable<void>{
     return this.http.delete<void>(`${this.apiServiceUrl}/question/${questionId}`) ;
   }
+
+ 
 }

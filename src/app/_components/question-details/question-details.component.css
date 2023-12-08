@@ -1,0 +1,47 @@
+.question-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+  
+  .user-info {
+    font-style: italic;
+    color: #555;
+  }
+  
+  .responses {
+    margin-top: 10px;
+  }
+  
+  .responses h4 {
+    color: #333;
+  }
+  
+  .comments-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .comment-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .comment-author {
+    font-weight: bold;
+  }
+  
+  .comment-content {
+    margin: 0;
+  }
+  

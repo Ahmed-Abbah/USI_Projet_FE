@@ -9,7 +9,7 @@ import {QuestionResponse} from "../../_models/QuestionResponse.module";
   styleUrls: ['./question-card.component.css']
 })
 export class QuestionCardComponent {
-  title = 'Q&A App';
+  title = 'fiscaConstra App';
   public questionResponses: QuestionResponse[] | undefined;
 
   constructor(private questionService: QuestionService) {}

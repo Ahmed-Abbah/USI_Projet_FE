@@ -1,1 +1,57 @@
-<p>questions works!</p>
+
+    <div class="container bootstrap snippets bootdey">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body p-t-0">
+                        <div class="input-group">
+                            <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-effect-ripple btn-primary"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row" *ngFor="let question of questionResponses" (click)="goToQuestion(question.id)">
+                <div class="panel">
+                    <div class="panel-body p-t-10">
+                        <div class="media-main">
+                            <a class="pull-left" href="#">
+                                <img class="thumb-lg img-circle bx-s" src="https://bootdey.com/img/Content/user_1.jpg" alt="">
+                            </a>
+                            <!-- <div class="pull-right btn-group-sm">
+                                <a href="#" class="btn btn-success tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete" (click)="deleteEmployee(question.id)">
+                                    <i class="fa fa-close"></i>
+                                </a>
+                            </div> -->
+                            <div class="info">
+                                <h2>{{question.question}}</h2>
+                                    <!--                                <p class="text-muted">{{question.user}}</p>-->
+                                <p class="text-muted"><small></small></p>
+                                
+
+                            </div>
+                            <div class="info">
+                                    <!--                                <p class="text-muted">{{question.user}}</p>-->
+                                <p class="text-muted"><small></small></p>
+                                <br>
+                                <p class="text-muted"><a><small>Ajouté par Ahmed Abbah</small></a></p>
+                                <p class="text-muted"><a><small>voté  10 fois</small></a></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
