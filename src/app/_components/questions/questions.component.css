@@ -4,12 +4,22 @@
     display: flex;
     align-items: center;
   }
-  
+
   .media-main .pull-left {
     margin-right: 15px; /* Adjust the margin as needed */
   }
-  
+
   .media-main .info {
     flex-grow: 1;
   }
-  
+
+/* Add this CSS to your styles */
+#line {
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#line:hover {
+  transform: scale(1.015); /* Adjust the scale factor as needed */
+}
+

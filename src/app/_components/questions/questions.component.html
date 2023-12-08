@@ -16,9 +16,9 @@
         </div>
         <div class="row">
             <div class="row" *ngFor="let question of questionResponses" (click)="goToQuestion(question.id)">
-                <div class="panel">
+                <div class="panel" >
                     <div class="panel-body p-t-10">
-                        <div class="media-main">
+                        <div class="media-main" id="line">
                             <a class="pull-left" href="#">
                                 <img class="thumb-lg img-circle bx-s" src="https://bootdey.com/img/Content/user_1.jpg" alt="">
                             </a>
@@ -30,20 +30,17 @@
                                     <i class="fa fa-close"></i>
                                 </a>
                             </div> -->
-                            <div class="info">
-                                <h2>{{question.question}}</h2>
-                                    <!--                                <p class="text-muted">{{question.user}}</p>-->
-                                <p class="text-muted"><small></small></p>
-                                
-
-                            </div>
-                            <div class="info">
-                                    <!--                                <p class="text-muted">{{question.user}}</p>-->
-                                <p class="text-muted"><small></small></p>
+                          <div class="card" >
+                            <div class="card-header">{{question.vote?.length}} | today at 7:08 PM</div>
+                            <div class="card-body">
+                              <blockquote class="blockquote mb-0">
+                                <p>{{question.question}}</p>
                                 <br>
-                                <p class="text-muted"><a><small>Ajouté par Ahmed Abbah</small></a></p>
-                                <p class="text-muted"><a><small>voté  10 fois</small></a></p>
+                                <footer class="blockquote-footer">[Nom + Prenom]<cite title="Source Title">[Fonction]</cite></footer>
+
+                              </blockquote>
                             </div>
+                          </div>
                         </div>
                         <div class="clearfix"></div>
                         <hr>
@@ -52,6 +49,9 @@
             </div>
         </div>
     </div>
+
+
+
 
 
 
