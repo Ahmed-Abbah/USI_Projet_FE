@@ -1,1 +1,59 @@
-<p>experts works!</p>
+<div class="container custom-form-container mat-elevation-z2">
+
+  <mat-form-field class="col-12">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+  </mat-form-field>
+
+  <h1 class="title col-12">Les Experts</h1>
+
+
+  <div class="row ps-3 pe-3 d-flex justify-content-between">
+
+
+    <ng-container *ngFor="let expert of data" >
+
+      <mat-card class="example-card col-3 mb-3" style="width: 24%">
+        <!-- The ngIf condition ensures that only every 4th card is created within a row -->
+
+
+        <div class="container">
+
+          <div class="row">
+
+            <div class="col-6 d-flex align-content-center align-items-center justify-content-center">
+              Images
+            </div>
+
+            <div class="col-6  d-flex align-content-center align-items-center justify-content-center">
+
+              <mat-card-content class="d-flex flex-column align-items-center">
+                <button mat-button class="btn-sml text-nowrap" style="color: #648DE5">
+                  {{(expert.nom + " " + expert.prenom).slice(0, 10)}}...
+                </button>
+                <p class="text-break">{{expert.email}}</p>
+                <p class="text-break">{{expert.fonction}}</p>
+              </mat-card-content>
+
+              <!--        <div class="d-flex justify-content-between">-->
+              <!--          <mat-label align="end" class="m-3">-->
+              <!--            <p align="center">{{metier.questions.length}}<br>questions</p>-->
+              <!--          </mat-label>-->
+              <!--        </div>-->
+
+            </div>
+
+          </div>
+        </div>
+
+
+      </mat-card>
+
+    </ng-container>
+
+  </div>
+
+  <mat-paginator class="col-12" #paginator [length]="length">
+  </mat-paginator>
+
+</div>

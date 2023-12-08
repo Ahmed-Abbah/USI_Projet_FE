@@ -15,7 +15,7 @@ export class LogoComponent {
 
 
   backHome() {
-        //this.router.navigateByUrl("/home")
+        this.router.navigateByUrl("")
   }
 
 }

@@ -8,7 +8,7 @@ import {sideNavData} from "../../_data/sidenav.data";
 })
 export class SidenavComponent {
 
-  sideNavData = sideNavData;
+  public sideNavData = [...sideNavData];
 
   constructor() {}
 
