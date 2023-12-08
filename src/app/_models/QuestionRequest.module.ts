@@ -1,6 +1,6 @@
 // question.model.ts
 
-import { Metier } from "./Metier.module";
+import { Metier } from "./MetierRequest.module";
 import { Reponse } from "./ReponseResponse.module";
 import { User } from "./UserRequest.module";
 import { Vote } from "./VoteRequest.module";
