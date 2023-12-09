@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './_components/navbar/navbar.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { SidenavComponent } from './_components/sidenav/sidenav.component';
 import { LogoComponent } from './_components/_navbar/logo/logo.component';
 import { LoginComponent } from './_commons/_components/login/login.component';
@@ -57,7 +57,10 @@ import {MatCardModule} from "@angular/material/card";
 import { UserMenuComponent } from './_components/_navbar/user-menu/user-menu.component';
 import { AvatarComponent } from './_components/_navbar/avatar/avatar.component';
 import { MenuItemComponent } from './_components/_navbar/menu-item/menu-item.component';
-
+import {AppHttpInterceptor} from "./_commons/_interceptors/app-http.interceptor";
+import {DateAdapter, MAT_DATE_FORMATS, NativeDateAdapter} from "@angular/material/core";
+import { EmployeesComponent } from './_components/employees/employees.component';
+import { AjouterEmployeeComponent } from './_components/ajouter-employee/ajouter-employee.component';
 
 
 
@@ -80,7 +83,9 @@ import { MenuItemComponent } from './_components/_navbar/menu-item/menu-item.com
 
     UserMenuComponent,
     AvatarComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    EmployeesComponent,
+    AjouterEmployeeComponent
   ],
 
   imports: [
@@ -117,7 +122,7 @@ import { MenuItemComponent } from './_components/_navbar/menu-item/menu-item.com
     DateRangePickerModule,
 
 
-    // BsDatepickerModule.forRoot(), // Initialize the Datepicker module
+
     ToastrModule.forRoot(), // Initialize the Toastr module
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right', // Adjust the toast position as needed
@@ -128,14 +133,10 @@ import { MenuItemComponent } from './_components/_navbar/menu-item/menu-item.com
   ],
 
 
-  // exports: [
-  //   NavbarComponent,
-  // ],
+  exports: [],
   providers: [
-    // {provide : HTTP_INTERCEPTORS, useClass : AppHttpInterceptor, multi : true},
-    // { provide: DateAdapter, useClass: NativeDateAdapter },
-    // { provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT },
-
+    {provide : HTTP_INTERCEPTORS, useClass : AppHttpInterceptor, multi : true},
+    { provide: DateAdapter, useClass: NativeDateAdapter },
   ],
   bootstrap: [AppComponent]
 })

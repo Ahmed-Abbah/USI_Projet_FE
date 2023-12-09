@@ -1,4 +1,4 @@
-import { Fonction, Role } from "./Enums.module";
+import {Fonction} from "../_enums/Fonction.enum";
 
 
 // user.model.ts
@@ -9,4 +9,5 @@ export interface UserRequest {
     nom: string;
     prenom: string;
     fonction: Fonction;
+    // isExits : boolean
 }

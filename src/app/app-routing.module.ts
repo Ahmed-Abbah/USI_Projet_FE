@@ -8,6 +8,9 @@ import {QuestionsComponent} from "./_components/questions/questions.component";
 import {MetiersComponent} from "./_components/metiers/metiers.component";
 import {ExpertsComponent} from "./_components/experts/experts.component";
 import { QuestionDetailsComponent } from './_components/question-details/question-details.component';
+import {AuthenticationGuard} from "./_commons/_guards/authentication.guard";
+import {EmployeesComponent} from "./_components/employees/employees.component";
+import {AjouterEmployeeComponent} from "./_components/ajouter-employee/ajouter-employee.component";
 
 
 const routes: Routes = [
@@ -36,13 +39,18 @@ const routes: Routes = [
   // },
 
   {
-    path: 'employee', component: EmployeeTemplateComponent ,children : [
+    path: 'employee', component: EmployeeTemplateComponent ,canActivate : [AuthenticationGuard],children : [
 
-      {path: '', component : DashboardComponent},
+      {path: '', component : EmployeesComponent},
+      {path: 'ajout', component : AjouterEmployeeComponent},
+
+
+      {path: 'home', component : DashboardComponent},
       {path: 'questions', component : QuestionsComponent},
       {path: 'question/:questionId', component : QuestionDetailsComponent},
       {path: 'metiers', component : MetiersComponent},
       {path : 'experts', component : ExpertsComponent },
+
     ]
   },
 

@@ -10,4 +10,5 @@ export interface UserResponse {
     prenom: string;
     fonction: Fonction;
     role: Role;
+    isExits : boolean;
 }

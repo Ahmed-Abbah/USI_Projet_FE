@@ -20,6 +20,18 @@
           <span>{{data.title}}</span>
         </a>
       </li>
+
+      <div *ngIf="(appSatateService.authState.roles === adminRole)">
+
+        <li *ngFor="let data of sideNavDataAdminOnly" >
+          <a style="text-decoration: none;" routerLink="{{data.route}}">
+            <mat-icon class="icon" >{{data.icon}}</mat-icon>
+            <span>{{data.title}}</span>
+          </a>
+        </li>
+
+      </div>
+
     </ul>
   </div>
 

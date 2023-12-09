@@ -50,7 +50,7 @@ export class LoginComponent {
 
         // if(this.appStateService.authState.roles.toString() === Role[Role.EMPLOYEE]){
 
-        this.router.navigateByUrl("/employee");
+        this.router.navigateByUrl("/employee/home");
         // }else {
         //this.router.navigateByUrl("/admin");
         // console.log(("Le role n'est pas correct"));
