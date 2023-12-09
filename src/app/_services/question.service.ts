@@ -9,7 +9,7 @@ import {QuestionResponse} from "../_models/QuestionResponse.module";
   providedIn: 'root'
 })
 export class QuestionService {
-  private apiServiceUrl="http://localhost:8083";
+  private apiServiceUrl="http://localhost:8083/employee";
 
   constructor(private http : HttpClient) {}
 
@@ -34,5 +34,5 @@ export class QuestionService {
     return this.http.delete<void>(`${this.apiServiceUrl}/question/${questionId}`) ;
   }
 
- 
+
 }

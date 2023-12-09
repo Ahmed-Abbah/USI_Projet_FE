@@ -1,0 +1,116 @@
+<!--<section class="vh-100" style="background-color: #508bfc;">-->
+<section class="mat-elevation-z24 z-3 shadow-3">
+
+  <div class="container py-5">
+
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <h3 class="mb-5  fs-3">Ajout d'un Employee</h3>
+
+            <div *ngIf="errorState" class="mb-4">
+              <div class="text-danger fw-bold"> {{errorMessage}} </div>
+            </div>
+
+
+            <form [formGroup]="fromSignUp" (ngSubmit)="handleAjout()">
+
+
+              <div class="mb-4">
+                <input type="text"
+                       id="nom"
+                       class="form-control form-control-lg"
+                       placeholder="Nom"
+                       formControlName="nom"
+                />
+              </div>
+
+
+              <div class="mb-4">
+                <input type="text"
+                       id="prenom"
+                       class="form-control form-control-lg"
+                       placeholder="Prenom"
+                       formControlName="prenom"
+                />
+              </div>
+
+
+
+              <div class="mb-4">
+                <input type="email"
+                       id="email"
+                       class="form-control form-control-lg"
+                       placeholder="Email"
+                       formControlName="email"
+                />
+              </div>
+
+
+
+              <div class="mb-4">
+                <input type="email"
+                       id="emailConfirm"
+                       class="form-control form-control-lg"
+                       placeholder="Confirmation Email"
+                       formControlName="emailConfirm"
+                />
+              </div>
+
+              <div class="mb-4">
+                <input type="password"
+                       id="password"
+                       class="form-control form-control-lg"
+                       placeholder="Mot de passe"
+                       formControlName="password"
+                />
+              </div>
+
+              <div class="mb-4">
+                <input type="password"
+                       id="passwordConfirm"
+                       class="form-control form-control-lg"
+                       placeholder="Mot de passe"
+                       formControlName="passwordConfirm"
+                />
+              </div>
+
+
+
+              <div class="mb-4">
+                <select id="fonction"
+                        class="form-select form-control-lg"
+                        formControlName="fonction" required>
+
+                  <option value="fonction_1">Fonction_1</option>
+                  <option value="fonction_2">Fonction_1</option>
+                  <option value="fonction_3">Fonction_3</option>
+                  <option value="retraite">Retraite</option>
+                </select>
+              </div>
+
+
+
+              <!-- Checkbox -->
+              <div class="form-check d-flex justify-content-start mb-4">
+                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                <label class="form-check-label" for="form1Example3">Se souvenir du mot de passe</label>
+              </div>
+
+
+
+              <button [disabled]="fromSignUp.invalid" class="btn btn-primary btn-lg btn-block" type="submit">Ajouter</button>
+            </form>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
