@@ -15,7 +15,7 @@ export class UserService {
   constructor(private http : HttpClient) { }
 
   public getExperts(page: number) : Observable<UserResponse[]>{
-    const  getExpertsUrl:string = `${this.href}/experts?page=${page}`;
+    const  getExpertsUrl:string = `${this.href}/expert?page=${page}`;
     return this.http.get<UserResponse[]>(getExpertsUrl);
   }
 

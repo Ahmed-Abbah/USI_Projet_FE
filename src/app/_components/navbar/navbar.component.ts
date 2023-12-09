@@ -1,4 +1,16 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AppStateService} from "../../_commons/_services/app-state.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UserRequest} from "../../_models/UserRequest.module";
+import {Fonction} from "../../_enums/Fonction.enum";
+import {Router} from "@angular/router";
+import {UserService} from "../../_services/user.service";
+import {take} from "rxjs";
+import {UserResponse} from "../../_models/UserResponse.module";
+import {QuestionRequest} from "../../_models/QuestionRequest.module";
+import {MetierRequest} from "../../_models/MetierRequest.module";
+import {QuestionService} from "../../_services/question.service";
+import {QuestionResponse} from "../../_models/QuestionResponse.module";
 
 @Component({
   selector: 'app-navbar',
@@ -7,227 +19,62 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 })
 export class NavbarComponent implements OnInit, AfterViewInit{
 
-  // public startState : Observable<boolean> = new Observable<boolean>();
-  //
-  // public finishState : Observable<boolean> = new Observable<boolean>();
-  //
-  // public startBreakState : Observable<boolean> = new Observable<boolean>();
-  // public finishBreakState : Observable<boolean> = new Observable<boolean>();
-  //
-  // public finishHumeurState : Observable<boolean> = new Observable<boolean>();
-  //
-  // public  tempsTravailResponse !: TempsTravailResponse
-  // public  tempsPauseResponse !: TempsPauseResponse
-  // public humeur : string = "";
-  //
-  //
-  // constructor(public workstateService : WorkstateService,
-  //             public worktimeService :WorktimeService,
-  //             public humeurInputService : HumeurInputService,
-  //             public humeurService : HumeurService) {
-  // }
-  //
-  //
-  //
-  ngAfterViewInit() {
-  //
-  //   let body: string = "just verify"
-  //   this.startState = this.workstateService.verifyStartWorkState(body);
-  //
-  //
-  //   let body1: string = "just finish"
-  //   this.finishState = this.workstateService.verifyFinishWorkState(body1);
-  //
-  //   let body2: string = "just break"
-  //   this.startBreakState = this.workstateService.verifyStartBreakState(body2);
-  //
-  //
-  //   let body3: string = "just finish brak"
-  //   this.finishBreakState = this.workstateService.verifyFinishBreakState(body3);
-  //
-  //
-  //   let body4: string = "just finish humeur";
-  //   this.finishHumeurState = this.workstateService.verifyFinishHumeurState(body4);
-  //
+
+
+  public fromSignUp !: FormGroup;
+  public errorState : boolean = false;
+  public errorMessage : string = "error";
+
+  private question : QuestionRequest ={
+    id : 0,
+    question : "",
+    metier : {
+      id : 0,
+      nom : "",
+      description : ""
+    }
   }
-  //
-  //
+
+
+
+  constructor(private fb: FormBuilder,
+              private router : Router,
+              private userService : UserService,
+              public appSatateService : AppStateService,
+              private questionService: QuestionService) {
+  }
+
+  ngAfterViewInit() {
+  }
+
+
   ngOnInit(): void {
 
+    this.fromSignUp = this.fb.group({
+      question : this.fb.control("",[Validators.required]),
+      metierNom : this.fb.control("",[Validators.required]),
+    })
+  }
+
+
+  handleAjout() {
+    /**
+     * La recuperation des donnees
+     */
+
+
+      this.question.question = this.fromSignUp.value.question;
+      this.question.metier.nom = this.fromSignUp.value.metierNom;
+
+
+      this.questionService.addQuestion(this.question).pipe(take(1)).subscribe({
+
+        next : (value : QuestionResponse) => {
+            this.router.navigateByUrl("/employee/question");
+        }
+      });
 
   }
-  //
-  //
-  // tempsTravail : TempsTravailRequest = {
-  //   id : 0,
-  //   dateDebut : new Date(),
-  //   dateFin : new Date(),
-  // }
-  //
-  //
-  // confirmerCommencerTravail() {
-  //
-  //
-  //   this.worktimeService.saveWorkTime(this.tempsTravail).subscribe({
-  //     next: savedWorkTime => {
-  //       console.log("apres enregistrement : ");
-  //       console.log(savedWorkTime);
-  //     },
-  //     error: err => {
-  //       console.log(err);
-  //     }
-  //   })
-  //
-  //
-  //   let body: string = "just verify"
-  //   this.startState = this.workstateService.verifyStartWorkState(body);
-  //
-  //
-  //   window.location.reload();
-  //
-  //
-  // }
-  //
-  // initModal(){}
-  //
-  //
-  // CommencerTravailHandle() {
-  //
-  // }
-  //
-  // FinirTravailHandle() {
-  //
-  // }
-  //
-  // resetEditData() {
-  //
-  // }
-  //
-  //
-  //
-  // confirmerFinirTravail() {
-  //
-  //   console.log("finnnnnnnnnnnnnnnnnnnnnnn1")
-  //   this.worktimeService.getTodayWorkTimeOnly().pipe(
-  //     concatMap((value)=>{
-  //         this.tempsTravailResponse = value;
-  //         return this.worktimeService.finishWorkTime(this.tempsTravailResponse.id,this.tempsTravail)
-  //       }
-  //     )
-  //   ).subscribe({
-  //       next: updatedWorkTime => {
-  //         console.log("apres la fin du travail : ");
-  //         console.log(updatedWorkTime);
-  //         let body: string = "just finish"
-  //         this.finishState = this.workstateService.verifyFinishWorkState(body);
-  //         window.location.reload();
-  //       },
-  //       error: err => {
-  //         console.log(err);
-  //       }
-  //     }
-  //   )
-  //
-  //   console.log("finnnnnnnnnnnnnnnnnnnnnnn2")
-  // }
-  //
-  //
-  //
-  //
-  //
-  // CommencerReposHandle() {
-  //
-  // }
-  //
-  // FinirReposHandle() {
-  //
-  // }
-  //
-  //
-  // tempsPause : TempsPauseRequest = {
-  //   id : 0,
-  //   dateDebut : new Date(),
-  //   dateFin : new Date(),
-  // }
-  // confirmerCommencerRepos() {
-  //
-  //   this.worktimeService.saveBreakTime(this.tempsPause).subscribe({
-  //     next: savedBreakTime => {
-  //       console.log("apres enregistrement pause: ");
-  //       console.log(savedBreakTime);
-  //     },
-  //     error: err => {
-  //       console.log(err);
-  //     }
-  //   })
-  //
-  //
-  //   let body: string = "just break"
-  //   this.startBreakState = this.workstateService.verifyStartBreakState(body);
-  //
-  //   window.location.reload();
-  //
-  // }
-  //
-  // confirmerFinirRepos() {
-  //
-  //   this.worktimeService.getTodayBreakTimeOnly().pipe(
-  //     concatMap((value)=>{
-  //         this.tempsPauseResponse = value;
-  //         return this.worktimeService.finishBreakTime(this.tempsPauseResponse.id,this.tempsPause)
-  //       }
-  //     )
-  //   ).subscribe({
-  //       next: updatedBreakTime => {
-  //         console.log("apres la fin du travail : ");
-  //         console.log(updatedBreakTime);
-  //         let body: string = "just finish"
-  //         this.finishState = this.workstateService.verifyFinishBreakState(body);
-  //         window.location.reload();
-  //       },
-  //       error: err => {
-  //         console.log(err);
-  //       }
-  //     }
-  //   )
-  // }
-  //
-  //
-  //
-  //
-  //
-  //
-  // humeurRequest : HumeurRequest = {
-  //   humeur : ""
-  // }
-  // soumettreHumeur() {
-  //
-  //   this.humeurInputService.humeur$.pipe(
-  //     concatMap((value)=>{
-  //         this.humeurRequest.humeur = value;
-  //         console.log("Request Humeur");
-  //         console.log(this.humeurRequest);
-  //         return this.humeurService.saveHumeur(this.humeurRequest);
-  //       }
-  //     )
-  //   ).subscribe({
-  //       next: savedHumeur => {
-  //         console.log("Response Humeur");
-  //         console.log(savedHumeur);
-  //         let body: string = "just finish";
-  //         this.finishHumeurState = this.workstateService.verifyFinishHumeurState(body);
-  //         window.location.reload();
-  //
-  //       },
-  //       error: err => {
-  //         console.log(err);
-  //       }
-  //     }
-  //   )
-  //
-  //
-  //
-  // }
 
 
 }

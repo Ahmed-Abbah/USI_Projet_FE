@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {AppStateService} from "../../_services/app-state.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../../_services/auth.service";
+import {Role} from "../../../_enums/Role.enum.ts";
 
 
 
@@ -48,13 +49,11 @@ export class LoginComponent {
          */
 
 
-        // if(this.appStateService.authState.roles.toString() === Role[Role.EMPLOYEE]){
-
-        this.router.navigateByUrl("/employee/home");
-        // }else {
-        //this.router.navigateByUrl("/admin");
-        // console.log(("Le role n'est pas correct"));
-        // }
+        if (this.appStateService.authState.roles.toString() === Role[Role.EMPLOYEE]) {
+          this.router.navigateByUrl("/employee/question");
+        } else if (this.appStateService.authState.roles.toString() === Role[Role.ADMIN]){
+          this.router.navigateByUrl("/employee");
+        }
 
       },
       error: err => {

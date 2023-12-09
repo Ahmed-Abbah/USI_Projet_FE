@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import {UserService} from "../../_services/user.service";
 import {take} from "rxjs";
 import {UserResponse} from "../../_models/UserResponse.module";
+import {MetierToQuestionsService} from "../../_services/metier-to-questions.service";
 
 
 @Component({
@@ -32,7 +33,8 @@ export class AjouterEmployeeComponent implements OnInit{
 
   constructor(private fb: FormBuilder,
               private router : Router,
-              private userService : UserService) {
+              private userService : UserService,
+              public metierToQuestionsService : MetierToQuestionsService) {
   }
 
   ngOnInit(): void {
@@ -49,6 +51,15 @@ export class AjouterEmployeeComponent implements OnInit{
 
       fonction : this.fb.control(Fonction.Fonction_1,[Validators.required]),
 
+    })
+
+
+    this.metierToQuestionsService.modeMetier$.pipe(take(1)).subscribe({
+      next : value => {
+        this.metierToQuestionsService.setNomMetier("");
+        this.metierToQuestionsService.setModeMetier(false);
+        this.metierToQuestionsService.setModeQuestion(true);
+      }
     })
 
   }

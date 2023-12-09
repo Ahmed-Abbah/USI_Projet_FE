@@ -1,18 +1,19 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {UserResponse} from "../../_models/UserResponse.module";
 import {SelectionModel} from "@angular/cdk/collections";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {UserService} from "../../_services/user.service";
 import {catchError, map, startWith, switchMap} from "rxjs/operators";
-import {merge, of as observableOf} from "rxjs";
+import {merge, of as observableOf, take} from "rxjs";
+import {MetierToQuestionsService} from "../../_services/metier-to-questions.service";
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.css']
 })
-export class EmployeesComponent implements AfterViewInit{
+export class EmployeesComponent implements  OnInit,AfterViewInit{
 
 
   public data : UserResponse[] = [];
@@ -33,7 +34,8 @@ export class EmployeesComponent implements AfterViewInit{
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(public userService: UserService) {}
+  constructor(public userService: UserService,
+              public metierToQuestionsService : MetierToQuestionsService) {}
 
 
 
@@ -138,5 +140,19 @@ export class EmployeesComponent implements AfterViewInit{
   applyFilter(event: Event) {
 
   }
+
+  ngOnInit(): void {
+
+    // this.ngAfterViewInit();
+
+    this.metierToQuestionsService.modeMetier$.pipe(take(1)).subscribe({
+      next : value => {
+        this.metierToQuestionsService.setNomMetier("");
+        this.metierToQuestionsService.setModeMetier(false);
+        this.metierToQuestionsService.setModeQuestion(true);
+      }
+    })
+  }
+
 
 }

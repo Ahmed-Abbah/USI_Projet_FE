@@ -45,11 +45,11 @@ const routes: Routes = [
       {path: 'ajout', component : AjouterEmployeeComponent},
 
 
-      {path: 'home', component : DashboardComponent},
-      {path: 'questions', component : QuestionsComponent},
+      // {path: 'home', component : DashboardComponent},
+      {path: 'question', component : QuestionsComponent},
       {path: 'question/:questionId', component : QuestionDetailsComponent},
-      {path: 'metiers', component : MetiersComponent},
-      {path : 'experts', component : ExpertsComponent },
+      {path: 'metier', component : MetiersComponent},
+      {path : 'expert', component : ExpertsComponent },
 
     ]
   },

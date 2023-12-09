@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {UserResponse} from "../../_models/UserResponse.module";
@@ -7,13 +7,14 @@ import {UserService} from "../../_services/user.service";
 
 import {merge, of as observableOf, take} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
+import {MetierToQuestionsService} from "../../_services/metier-to-questions.service";
 
 @Component({
   selector: 'app-experts',
   templateUrl: './experts.component.html',
   styleUrls: ['./experts.component.css']
 })
-export class ExpertsComponent implements AfterViewInit{
+export class ExpertsComponent implements OnInit, AfterViewInit{
 
 
 
@@ -28,7 +29,8 @@ export class ExpertsComponent implements AfterViewInit{
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(public uService : UserService){}
+  constructor(public uService : UserService,
+              public  metierToQuestionsService : MetierToQuestionsService){}
 
 
   applyFilter(event: Event) {
@@ -86,6 +88,19 @@ export class ExpertsComponent implements AfterViewInit{
         });
       console.log("B2 : ");
 
+  }
+
+  ngOnInit(): void {
+
+    // this.ngAfterViewInit();
+
+    this.metierToQuestionsService.modeMetier$.pipe(take(1)).subscribe({
+      next : value => {
+        this.metierToQuestionsService.setNomMetier("");
+        this.metierToQuestionsService.setModeMetier(false);
+        this.metierToQuestionsService.setModeQuestion(true);
+      }
+    })
   }
 
 }

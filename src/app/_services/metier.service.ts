@@ -15,7 +15,7 @@ export class MetierService {
   constructor(private http : HttpClient) { }
 
   public getMetiers(page: number) : Observable<MetierResponse[]>{
-    const  getMetiersUrl:string = `${this.href}/metiers?page=${page}`;
+    const  getMetiersUrl:string = `${this.href}/metier?page=${page}`;
     return this.http.get<MetierResponse[]>(getMetiersUrl);
   }
 

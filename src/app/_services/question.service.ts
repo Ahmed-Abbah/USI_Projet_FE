@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {QuestionResponse} from "../_models/QuestionResponse.module";
+import {QuestionRequest} from "../_models/QuestionRequest.module";
 
 
 
@@ -17,12 +18,17 @@ export class QuestionService {
     return this.http.get<QuestionResponse>(`${this.apiServiceUrl}/question/${questionId}`) ;
   }
 
-  public getQuestions():Observable<QuestionResponse[]>{
-    return this.http.get<QuestionResponse[]>(`${this.apiServiceUrl}/question`) ;
+  public getQuestions(nomMetier : string):Observable<QuestionResponse[]>{
+    return this.http.get<QuestionResponse[]>(`${this.apiServiceUrl}/question?nomMetier=${nomMetier}`) ;
   }
 
+  //
+  // public getQuestionsByMetier(nomMetier : string):Observable<QuestionResponse[]>{
+  //   return this.http.get<QuestionResponse[]>(`${this.apiServiceUrl}/question?nomMetier=${nomMetier}`) ;
+  // }
 
-  public addQuestion(question : QuestionResponse):Observable<QuestionResponse>{
+
+  public addQuestion(question : QuestionRequest):Observable<QuestionResponse>{
     return this.http.post<QuestionResponse>(`${this.apiServiceUrl}/question`,question) ;
   }
 

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 
 import { QuestionService } from '../../_services/question.service';
 import {QuestionResponse} from "../../_models/QuestionResponse.module";
 import { Router } from '@angular/router';
+import {MetierToQuestionsService} from "../../_services/metier-to-questions.service";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-question-card',
@@ -11,30 +13,98 @@ import { Router } from '@angular/router';
 })
 
 
-export class QuestionsComponent {
+export class QuestionsComponent implements OnInit, AfterViewInit{
   title = 'fiscaConstra App';
+
   public questionResponses: QuestionResponse[] | undefined;
-  
-  constructor(private questionService: QuestionService,private router: Router) {
+
+  public questionResponsesByMetier: QuestionResponse[] | undefined;
+
+
+  constructor(private questionService: QuestionService,
+              private router: Router,
+              public  metierToQuestionsService : MetierToQuestionsService) {
 
   }
 
   ngOnInit() {
+
     this.getQuestions();
+    console.log("1 : ");
     console.log(this.questionResponses);
+    console.log("1 : ");
+    console.log(this.questionResponsesByMetier);
   }
 
   public getQuestions(): void {
-    this.questionService.getQuestions().subscribe({
-      next: (response) => {
-        this.questionResponses = response;
+
+
+
+    this.metierToQuestionsService.nomMetier$.subscribe({
+      next: (nom) => {
+
+        let nomMetier : string = nom;
+        console.log("test nom metier" + nomMetier);
+
+        this.questionService.getQuestions(nomMetier).subscribe({
+          next: (response) => {
+            this.questionResponses = response;
+          },
+          error: (error) => {
+            alert(error.message);
+            console.log(error);
+          }
+        });
       },
       error: (error) => {
         alert(error.message);
         console.log(error);
       }
-  });
+
+    });
+
+
+
+
+
   }
+
+
+
+  // public getQuestionsByMetier(): void {
+  //
+  //
+  //   this.metierToQuestionsService.nomMetier$.subscribe({
+  //     next: (nom) => {
+  //
+  //       let nomMetier : string = nom;
+  //       console.log("test nom metier" + nomMetier);
+  //
+  //       if(nomMetier != ""){
+  //         this.questionService.getQuestionsByMetier(nomMetier).subscribe({
+  //
+  //           next: (response) => {
+  //             this.questionResponsesByMetier = response;
+  //           },
+  //           error: (error) => {
+  //             alert(error.message);
+  //             console.log(error);
+  //           }
+  //         });
+  //       }
+  //
+  //
+  //
+  //     },
+  //     error: (error) => {
+  //       alert(error.message);
+  //       console.log(error);
+  //     }
+  //   });
+  //
+  //
+  // }
+
 
   public deleteEmployee(id: number) {
     // You should call the deleteEmployees method with the appropriate ID from your service.
@@ -52,10 +122,24 @@ export class QuestionsComponent {
 
   public goToQuestion(questionId:number){
     this.router.navigate(['employee/question/',questionId]);
+  }
+
+
+  applyFilter($event: KeyboardEvent) {
 
   }
 
-  
+  ngAfterViewInit(): void {
+
+
+    this.getQuestions();
+    console.log("2 : ");
+    console.log(this.questionResponses);
+    console.log("2 : ");
+    console.log(this.questionResponsesByMetier);
+
+
+  }
 
 
 

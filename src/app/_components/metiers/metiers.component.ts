@@ -111,6 +111,16 @@ export class MetiersComponent implements OnInit,AfterViewInit{
   ngOnInit(): void {
 
     // this.ngAfterViewInit();
+
+    this.mToqService.modeMetier$.pipe(take(1)).subscribe({
+      next : value => {
+        this.mToqService.setNomMetier("");
+        this.mToqService.setModeMetier(false);
+        this.mToqService.setModeQuestion(true);
+      }
+    })
+
+
   }
 
 
@@ -136,7 +146,7 @@ export class MetiersComponent implements OnInit,AfterViewInit{
         console.log(nom);
 
 
-        this.router.navigateByUrl("/employee/questions");
+        this.router.navigateByUrl("/employee/question");
       }
     })
   }

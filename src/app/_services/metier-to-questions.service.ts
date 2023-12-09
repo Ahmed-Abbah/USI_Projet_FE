@@ -27,5 +27,6 @@ export class MetierToQuestionsService {
   setNomMetier(nomMetier : string){
     this.nomMetierSubject.next(nomMetier);
   }
+
   constructor() { }
 }

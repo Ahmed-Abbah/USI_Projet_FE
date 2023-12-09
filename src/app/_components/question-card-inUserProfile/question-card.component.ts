@@ -20,7 +20,7 @@ export class QuestionCardComponent {
   }
 
   public getQuestions(): void {
-    this.questionService.getQuestions().subscribe({
+    this.questionService.getQuestions("").subscribe({
       next: (response) => {
         this.questionResponses = response;
       },
