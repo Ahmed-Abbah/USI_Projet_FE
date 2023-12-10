@@ -51,6 +51,7 @@ export class NavbarComponent implements OnInit, AfterViewInit{
       question : this.fb.control("",[Validators.required]),
       metierNom : this.fb.control("",[Validators.required]),
     })
+
   }
 
 

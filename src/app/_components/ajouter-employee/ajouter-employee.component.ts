@@ -27,7 +27,7 @@ export class AjouterEmployeeComponent implements OnInit{
     prenom : "",
     email: "",
     password :  "",
-    fonction : Fonction.Fonction_1,
+    fonction : Fonction.FONCTION_1,
     // isExits : false
   }
 
@@ -49,7 +49,7 @@ export class AjouterEmployeeComponent implements OnInit{
       password : this.fb.control("",[Validators.required]),
       passwordConfirm : this.fb.control("",[Validators.required]),
 
-      fonction : this.fb.control(Fonction.Fonction_1,[Validators.required]),
+      fonction : this.fb.control("",[Validators.required]),
 
     })
 
@@ -107,7 +107,8 @@ export class AjouterEmployeeComponent implements OnInit{
       this.user.password = password;
 
 
-      this.user.nom = this.fromSignUp.value.fonction
+      this.user.fonction = Fonction[this.fromSignUp.value.fonction.toUpperCase() as keyof typeof Fonction];
+
 
 
       this.userService.register(this.user).pipe(take(1)).subscribe({

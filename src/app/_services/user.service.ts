@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {MetierResponse} from "../_models/MetierResponse.module";
 import {UserResponse} from "../_models/UserResponse.module";
 import {UserRequest} from "../_models/UserRequest.module";
+import {QuestionResponse} from "../_models/QuestionResponse.module";
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,11 @@ export class UserService {
   }
 
 
+  doExpert(id: number, userRequest :UserRequest) : Observable<UserResponse>{
+    return this.http.put<UserResponse>(`${this.href}/expert/${id}`, userRequest) ;
+  }
+
 
 }
+
+

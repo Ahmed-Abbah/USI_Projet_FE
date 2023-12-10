@@ -5,6 +5,9 @@ import {QuestionResponse} from "../_models/QuestionResponse.module";
 import {QuestionRequest} from "../_models/QuestionRequest.module";
 import {VoteResponse} from "../_models/VoteResponse.module";
 
+import {ReponseRequest} from "../_models/ReponseRequest.module";
+import {ReponseResponse} from "../_models/ReponseResponse.module";
+
 
 
 @Injectable({
@@ -32,6 +35,13 @@ export class QuestionService {
   public addQuestion(question : QuestionRequest):Observable<QuestionResponse>{
     return this.http.post<QuestionResponse>(`${this.apiServiceUrl}/question`,question) ;
   }
+
+
+  public addReponse(reponse : ReponseRequest, id: number):Observable<ReponseResponse>{
+    return this.http.post<ReponseResponse>(`${this.apiServiceUrl}/reponse?id=${id}`,reponse) ;
+  }
+
+
 
   public updateQuestion(questionId:number,question : QuestionResponse):Observable<QuestionResponse>{
     return this.http.put<QuestionResponse>(`${this.apiServiceUrl}/question/${questionId}`,question) ;

@@ -7,6 +7,10 @@ import {UserService} from "../../_services/user.service";
 import {catchError, map, startWith, switchMap} from "rxjs/operators";
 import {merge, of as observableOf, take} from "rxjs";
 import {MetierToQuestionsService} from "../../_services/metier-to-questions.service";
+import {Router} from "@angular/router";
+import {UserRequest} from "../../_models/UserRequest.module";
+import {Fonction} from "../../_enums/Fonction.enum";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-employees',
@@ -25,7 +29,7 @@ export class EmployeesComponent implements  OnInit,AfterViewInit{
 
 
 
-  displayedColumns: string[] = ['Nom','Prenom', 'Email','Poste', 'Questions','Reponses', 'Votes', 'Actions'];
+  displayedColumns: string[] = ['Nom','Prenom', 'Email','Poste', 'Questions','Reponses', 'Votes', 'Status', 'Actions'];
 
 
   selection = new SelectionModel<UserResponse>(true, []);
@@ -35,7 +39,9 @@ export class EmployeesComponent implements  OnInit,AfterViewInit{
 
 
   constructor(public userService: UserService,
-              public metierToQuestionsService : MetierToQuestionsService) {}
+              public metierToQuestionsService : MetierToQuestionsService,
+              public router: Router,
+              private location: Location ) {}
 
 
 
@@ -97,6 +103,7 @@ export class EmployeesComponent implements  OnInit,AfterViewInit{
 
 
   loadWorkTimeData() {
+
     this.userService.getEmployees(
       this.paginator.pageIndex
     ).pipe(
@@ -121,6 +128,26 @@ export class EmployeesComponent implements  OnInit,AfterViewInit{
 
 
   doExpert(element : UserResponse) {
+
+    let userRequest : UserRequest ={
+
+      id: element.id,
+      email: element.email,
+      password: "",
+      nom: element.nom,
+      prenom: element.prenom,
+      fonction: Fonction.FONCTION_1 //Non juste???????????????????????
+    };
+
+    this.userService.doExpert(element.id, userRequest).subscribe({
+      next: (response) => {
+        // this.router.navigateByUrl("employee")
+        window.location.reload();
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
 
 
   }
