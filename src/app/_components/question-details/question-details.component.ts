@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { QuestionResponse } from 'src/app/_models/QuestionResponse.module';
@@ -15,7 +15,7 @@ import {ReponseResponse} from "../../_models/ReponseResponse.module";
   templateUrl: './question-details.component.html',
   styleUrls: ['./question-details.component.css']
 })
-export class QuestionDetailsComponent {
+export class QuestionDetailsComponent  implements OnInit{
   question : QuestionResponse | any ;
 
 
