@@ -63,4 +63,6 @@ export class QuestionDetailsComponent {
   applyFilter($event: KeyboardEvent) {
 
   }
+
+
 }
