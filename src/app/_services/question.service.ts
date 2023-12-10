@@ -37,6 +37,7 @@ export class QuestionService {
   }
 
 
+
   public addReponse(reponse : ReponseRequest, id: number):Observable<ReponseResponse>{
     return this.http.post<ReponseResponse>(`${this.apiServiceUrl}/reponse?id=${id}`,reponse) ;
   }
