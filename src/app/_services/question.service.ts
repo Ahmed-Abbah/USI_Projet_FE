@@ -3,8 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {QuestionResponse} from "../_models/QuestionResponse.module";
 import {QuestionRequest} from "../_models/QuestionRequest.module";
+import {VoteResponse} from "../_models/VoteResponse.module";
+
 import {ReponseRequest} from "../_models/ReponseRequest.module";
 import {ReponseResponse} from "../_models/ReponseResponse.module";
+
+
 
 
 
@@ -48,6 +52,12 @@ export class QuestionService {
   public deleteQuestion(questionId : number):Observable<void>{
     return this.http.delete<void>(`${this.apiServiceUrl}/question/${questionId}`) ;
   }
+
+  public voteQuestion(vote : VoteResponse,questionId : number):Observable<VoteResponse>{
+    return this.http.put<VoteResponse>(`${this.apiServiceUrl}/vote/${questionId}`,vote);
+  }
+
+
 
 
 }

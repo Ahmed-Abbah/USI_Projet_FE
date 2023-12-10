@@ -88,13 +88,6 @@ export class QuestionDetailsComponent {
 
 
 
-
-
-
-
-
-
-
   handleAjoutReponse(id : number) {
 
     this.reponse.reponse = this.fromResponse.value.reponse;
@@ -112,4 +105,6 @@ export class QuestionDetailsComponent {
 
 
   }
+
+
 }

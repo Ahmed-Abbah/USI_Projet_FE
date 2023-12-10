@@ -18,9 +18,6 @@ import {QuestionResponse} from "../../_models/QuestionResponse.module";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, AfterViewInit{
-
-
-
   public fromSignUp !: FormGroup;
   public errorState : boolean = false;
   public errorMessage : string = "error";
@@ -62,8 +59,6 @@ export class NavbarComponent implements OnInit, AfterViewInit{
     /**
      * La recuperation des donnees
      */
-
-
       this.question.question = this.fromSignUp.value.question;
       this.question.metier.nom = this.fromSignUp.value.metierNom;
 
