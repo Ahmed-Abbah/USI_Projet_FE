@@ -1,7 +1,9 @@
-import { Fonction, Role } from "./Enums.module";
+import {Fonction, Role} from "./Enums.module";
 import {Expert} from "../_enums/Expert.enum.ts";
+
 import {ReponseResponse} from "./ReponseResponse.module";
 import {QuestionResponse} from "./QuestionResponse.module";
+
 import {VoteResponse} from "./VoteResponse.module";
 
 
@@ -19,4 +21,6 @@ export interface UserResponse {
     reponses : ReponseResponse[];
     expert : Expert;
     isExits : boolean;
+
+
 }

@@ -51,11 +51,11 @@ export class QuestionService {
   }
 
   public deleteQuestion(questionId : number):Observable<void>{
-    return this.http.delete<void>(`${this.apiServiceUrl}/question/${questionId}`) ;
+    return this.http.delete<void>(`${this.apiServiceUrl}/question/${questionId}`);
   }
 
-  public voteQuestion(vote : VoteResponse,questionId : number):Observable<VoteResponse>{
-    return this.http.put<VoteResponse>(`${this.apiServiceUrl}/vote/${questionId}`,vote);
+  public voteQuestion(questionId: number): Observable<VoteResponse> {
+    return this.http.put<VoteResponse>(`${this.apiServiceUrl}/vote?id=${questionId}`,{});
   }
 
 
