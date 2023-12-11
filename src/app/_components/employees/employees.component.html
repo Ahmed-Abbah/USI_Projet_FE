@@ -45,20 +45,20 @@
       <!-- Nombre des questions Column -->
       <ng-container matColumnDef="Questions">
         <th mat-header-cell *matHeaderCellDef> Nombre des Questions </th>
-        <td mat-cell *matCellDef="let element"> variables ou services </td>
+        <td mat-cell *matCellDef="let element"> {{element.questions.length }} </td>
       </ng-container>
 
 
       <!-- Email Column -->
       <ng-container matColumnDef="Reponses">
         <th mat-header-cell *matHeaderCellDef> Nombre des Reponses </th>
-        <td mat-cell *matCellDef="let element"> variables ou services </td>
+        <td mat-cell *matCellDef="let element"> {{element.reponses.length }}</td>
       </ng-container>
 
       <!-- Email Column -->
       <ng-container matColumnDef="Votes">
         <th mat-header-cell *matHeaderCellDef> Nombre des Votes </th>
-        <td mat-cell *matCellDef="let element"> variables ou services </td>
+        <td mat-cell *matCellDef="let element"> {{ element.vote.length }}</td>
       </ng-container>
 
 

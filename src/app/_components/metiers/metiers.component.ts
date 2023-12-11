@@ -131,8 +131,6 @@ export class MetiersComponent implements OnInit,AfterViewInit{
       next : value => {
 
         this.mToqService.setNomMetier(nom);
-
-
         this.mToqService.setModeMetier(true);
         this.mToqService.setModeQuestion(false);
 
