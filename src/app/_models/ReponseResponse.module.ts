@@ -6,4 +6,7 @@ export interface ReponseResponse {
     reponse: string;
     parent : ReponseResponse;
     enfants : ReponseResponse[];
+
+
+   date: Date;
 }

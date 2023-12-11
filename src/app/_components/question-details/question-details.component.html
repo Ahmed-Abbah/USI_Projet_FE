@@ -20,7 +20,7 @@
               <div>
                 <h6 class="fw-bold text-primary mb-1">{{question.user?.nom +" " +question.user?.prenom}}</h6>
                 <p class="text-muted small mb-0">
-                  {{"metier : "+question.metier?.nom+" | publier le 9 décembre 2023 à 20:32"}}
+                  {{"metier : "+question.user.fonction +" | " + question.date + ""}}
                 </p>
               </div>
             </div>
@@ -42,9 +42,9 @@
                    src="https://th.bing.com/th/id/R.b57286b3bdd46230446527255162d230?rik=S0%2byU7RX6xMplg&pid=ImgRaw&r=0" alt="avatar" width="60"
                    height="60" />
               <div>
-                <h6 class="fw-bold text-primary mb-1">Lily Coleman</h6>
+                <h6 class="fw-bold text-primary mb-1">{{reponse.user?.nom +" " +reponse.user?.prenom}}</h6>
                 <p class="text-muted small mb-0">
-                  Shared publicly - Jan 2020
+                  {{"metier : "+reponse.user.fonction +" | " + reponse.date + ""}}
                 </p>
               </div>
             </div>
@@ -53,6 +53,7 @@
               {{reponse.reponse}}
             </p>
           </div>
+
 
 
 

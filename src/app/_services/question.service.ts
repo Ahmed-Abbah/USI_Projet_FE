@@ -12,7 +12,6 @@ import {ReponseResponse} from "../_models/ReponseResponse.module";
 
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -38,6 +37,7 @@ export class QuestionService {
   public addQuestion(question : QuestionRequest):Observable<QuestionResponse>{
     return this.http.post<QuestionResponse>(`${this.apiServiceUrl}/question`,question) ;
   }
+
 
 
   public addReponse(reponse : ReponseRequest, id: number):Observable<ReponseResponse>{

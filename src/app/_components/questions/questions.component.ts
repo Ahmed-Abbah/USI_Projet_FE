@@ -29,26 +29,27 @@ export class QuestionsComponent implements OnInit, AfterViewInit{
 
   ngOnInit() {
 
-    this.getQuestions();
-    console.log("1 : ");
-    console.log(this.questionResponses);
-    console.log("1 : ");
-    console.log(this.questionResponsesByMetier);
+    // this.getQuestions();
+    // console.log("1 : ");
+    // console.log(this.questionResponses);
+    // console.log("1 : ");
+    // console.log(this.questionResponsesByMetier);
   }
 
   public getQuestions(): void {
 
 
 
-    this.metierToQuestionsService.nomMetier$.subscribe({
+    this.metierToQuestionsService.nomMetier$.pipe(take(1)).subscribe({
       next: (nom) => {
 
         let nomMetier : string = nom;
-        console.log("test nom metier" + nomMetier);
-
-        this.questionService.getQuestions(nomMetier).subscribe({
+        console.log("test nom metier 11 : " + nomMetier);
+        this.questionService.getQuestions(nomMetier).pipe(take(1)).subscribe({
           next: (response) => {
+            console.log(response);
             this.questionResponses = response;
+            console.log("test nom metier 22 : " + nomMetier);
           },
           error: (error) => {
             alert(error.message);

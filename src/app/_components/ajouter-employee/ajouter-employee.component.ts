@@ -27,7 +27,7 @@ export class AjouterEmployeeComponent implements OnInit{
     prenom : "",
     email: "",
     password :  "",
-    fonction : Fonction.FONCTION_1,
+    fonction : Fonction.CHEF_D_ÉQUIPE,
     // isExits : false
   }
 
@@ -107,8 +107,13 @@ export class AjouterEmployeeComponent implements OnInit{
       this.user.password = password;
 
 
-      this.user.fonction = Fonction[this.fromSignUp.value.fonction.toUpperCase() as keyof typeof Fonction];
+      this.user.fonction = Fonction[this.fromSignUp.value.fonction as keyof typeof Fonction];
 
+      console.log(this.user.fonction);
+      console.log(this.user.fonction);
+      console.log(this.user.fonction);
+      console.log(this.user.fonction);
+      console.log(this.user.fonction);
 
 
       this.userService.register(this.user).pipe(take(1)).subscribe({
