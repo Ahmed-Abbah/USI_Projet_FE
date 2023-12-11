@@ -1,5 +1,6 @@
-import { Fonction, Role } from "./Enums.module";
+import {Fonction, Role} from "./Enums.module";
 import {Expert} from "../_enums/Expert.enum.ts";
+import {VoteResponse} from "./VoteResponse.module";
 
 
 // user.model.ts
@@ -13,4 +14,6 @@ export interface UserResponse {
     role: Role;
     expert : Expert;
     isExits : boolean;
+    vote:VoteResponse[];
+
 }

@@ -11,7 +11,8 @@ export interface QuestionResponse {
     id: number;
     question: string;
     type: string;
-    user :UserResponse; 
-    vote : VoteResponse[];
+    user :UserResponse;
+    vote : VoteResponse;
     reponses: ReponseResponse[];
+    date : Date;
 }
